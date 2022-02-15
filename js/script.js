@@ -39,10 +39,22 @@ document.getElementById("free-delivery").addEventListener("click", function () {
 let count = 0;
 document.getElementById("apply-btn").addEventListener("click", function () {
   const promo = document.getElementById("promo-input").value;
-  if (promo === "hardwork" && count === 0) {
-    let totalPrice = document.getElementById("total-price");
-    total = parseFloat(totalPrice.innerText) * 0.2;
-    totalPrice.innerText = parseFloat(totalPrice.innerText) - total;
-    count = 1;
+  if (promo === "hardwork") {
+    if (count === 0) {
+      let totalPrice = document.getElementById("total-price");
+      total = parseFloat(totalPrice.innerText) * 0.2;
+      totalPrice.innerText = parseFloat(totalPrice.innerText) - total;
+      document.getElementById("applied-text").style.display = "block";
+      document.getElementById("applied-none").style.display = "none";
+      count = 1;
+    } else {
+      document.getElementById("applied-text").style.display = "block";
+      document.getElementById("applied-text").innerText =
+        "Coupon aready applied";
+      document.getElementById("applied-none").style.display = "none";
+    }
+  } else {
+    document.getElementById("applied-none").style.display = "block";
+    document.getElementById("applied-text").style.display = "none";
   }
 });
